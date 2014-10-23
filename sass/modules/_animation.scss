@@ -1,0 +1,36 @@
+.animated {
+
+	&--pulse {
+		animation-name: pulse;
+		animation-duration: 1s;
+	}
+
+}
+
+@keyframes pulse {
+
+	0% {
+		opacity: 0;
+		transform: translate(-50%, 0) rotate(45deg);
+	}
+
+	25% {
+		opacity: 0;
+		transform: translate(-50%, 0) rotate(45deg);
+	}
+
+	60% {
+		opacity: 1;
+		transform: translate(-50%, 6px) rotate(45deg);
+	}
+
+	75% {
+		transform: translate(-50%, 0) rotate(45deg);
+	}
+
+	90% {
+		opacity: 0;
+		transform: translate(-50%, 0) rotate(45deg);
+	}
+
+}

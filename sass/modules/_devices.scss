@@ -1,0 +1,438 @@
+$deviceColor: #fff;
+// $deviceBorderColor: #f5f5f5;
+$deviceBorderColor: rgba(#999, 0.1);
+
+$iPhoneWidth: 336px;
+$iPhoneHeight: 711px;
+$iPhoneBorderRadius: 49px;
+$iPhoneBorderRadiusPercentWidth: ($iPhoneBorderRadius / $iPhoneWidth) * 100%;
+$iPhoneBorderRadiusPercentHeight: ($iPhoneBorderRadius / $iPhoneHeight) * 100%;
+
+$iPadWidth: 908px;
+$iPadHeight: 640px;
+$iPadBorderRadius: 33px;
+$iPadBorderRadiusPercentWidth: ($iPadBorderRadius / $iPadWidth) * 100%;
+$iPadBorderRadiusPercentHeight: ($iPadBorderRadius / $iPadHeight) * 100%;
+
+.device {
+	background: $deviceColor;
+	box-shadow:
+		0 0 0 2px $deviceBorderColor;
+	margin: 0 auto;
+	max-width: 0;
+	opacity: 0;
+	position: relative;
+
+	.is-visible & {
+		opacity: 1;
+	}
+
+}
+
+.iphone {
+	border-radius: #{$iPhoneBorderRadiusPercentWidth} / #{$iPhoneBorderRadiusPercentHeight};
+
+	&--large {
+		max-width: $iPhoneWidth;
+		width: 33%;
+	}
+
+	&--medium {
+		max-width: 306px;
+		width: 29%;
+	}
+
+	&--small {
+		max-width: 274px;
+		width: 25%;
+	}
+
+	&:after {
+		content: ' ';
+		display: block;
+		height: 0;
+		padding-bottom: ($iPhoneHeight / $iPhoneWidth) * 100%;
+		width: 100%;
+	}
+
+	&__component {
+		background: $deviceBorderColor;
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+
+		&--camera {
+			border-radius: 100%;
+			top:  (31px / $iPhoneHeight) * 100%;
+			width: (9px / $iPhoneWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: 100%;
+			}
+
+		}
+
+		&--earpiece {
+			border-radius: 40px;
+			top:  (59px / $iPhoneHeight) * 100%;
+			width: (43px / $iPhoneWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: (6px / 53px) * 100%;
+			}
+
+		}
+
+		&--sensor {
+			border-radius: 100% / 100%;
+			left: (132px / $iPhoneWidth) * 100%;
+			top: (59px / $iPhoneHeight) * 100%;
+			transform: none;
+			width: (5px / $iPhoneWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: 100%;
+			}
+
+		}
+
+		&--screenshot {
+			border: 1px solid $deviceBorderColor;
+			top: (104px / $iPhoneHeight) * 100%;
+			width: (285px / $iPhoneWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: (506px / 285px) * 100%;
+			}
+
+		}
+
+	}
+
+	&__button {
+		background: $deviceColor;
+		border: 2px solid $deviceBorderColor;
+		position: absolute;
+
+		&--power {
+			border-radius: 4px 4px 0 0;
+			border-bottom: none;
+			height: 4px;
+			right: (57px / $iPhoneWidth) * 100%;
+			top: -6px;
+			width: (54px / $iPhoneWidth) * 100%;
+		}
+
+		&--lock,
+		&--volume {
+			border-radius: 4px 0 0 4px;
+			border-right: 0 none;
+			left: -6px;
+			width: 4px;
+		}
+
+		&--lock {
+			height: (31px / $iPhoneHeight) * 100%;
+			top: (99px / $iPhoneHeight) * 100%;
+		}
+
+		&--volume {
+			height: (25px / $iPhoneHeight) * 100%;
+
+			&--up {
+				top: (166px / $iPhoneHeight) * 100%;
+			}
+
+			&--down {
+				top: (225px / $iPhoneHeight) * 100%;
+			}
+
+		}
+
+		&--home {
+			border-radius: 100%;
+			bottom: (25px / $iPhoneHeight) * 100%;
+			box-sizing: border-box;
+			left: 50%;
+			transform: translateX(-50%);
+			width: (50px / $iPhoneWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: 100%;
+			}
+
+		}
+
+	}
+
+}
+
+.ipad {
+	border-radius: #{$iPadBorderRadiusPercentWidth} / #{$iPadBorderRadiusPercentHeight};
+
+	&--large {
+		max-width: 908px;
+		width: 50%;
+	}
+
+	&--small {
+		max-width: 608px;
+		width: 41%;
+	}
+
+	&:after {
+		content: ' ';
+		display: block;
+		height: 0;
+		padding-bottom: ($iPadHeight / $iPadWidth) * 100%;
+		width: 100%;
+	}
+
+	&__component,
+	&__button {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__component {
+		background: $deviceBorderColor;
+
+		&--camera {
+			border-radius: 100% / 100%;
+			left: (35px / $iPadWidth) * 100%;
+			width: (10px / $iPadWidth) * 100%;
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 0;
+				padding-bottom: 100%;
+			}
+
+		}
+
+		&--screenshot {
+			background: $deviceBorderColor;
+			border-radius: 4px;
+			box-sizing: border-box;
+			height: (566px / $iPadHeight) * 100%;
+			left: 50%;
+			padding: 2px;
+			transform: translateX(-50%) translateY(-50%);
+			width: (752px / $iPadWidth) * 100%;
+
+			.showcase__screenshot {
+				width: 100%;
+
+				&:after {
+					content: ' ';
+					display: block;
+					height: 0;
+					padding-bottom: (560px / 746px) * 100%;
+				}
+
+			}
+
+		}
+
+	}
+
+	&__button {
+		border: 1px solid $deviceBorderColor;
+		border-radius: 100% / 100%;
+
+		&--home {
+			right: (16px / $iPadWidth) * 100%;
+			width: (42px / $iPadWidth) * 100%;
+
+			&:before {
+				border: 2px solid $deviceBorderColor;
+				border-radius: (10px / 42px) * 100%;
+				content: ' ';
+				display: block;
+				height: (12px / 42px) * 100%;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				width: (12px / 42px) * 100%;
+			}
+
+			&:after {
+				content: ' ';
+				display: block;
+				height: 100%;
+				padding-bottom: 100%;
+			}
+
+		}
+
+	}
+
+}
+
+.browser {
+	border-radius: 4px;
+
+	&--large {
+		max-width: 908px;
+		width: 50%;
+	}
+
+	&--small {
+		max-width: 608px;
+		width: 41%;
+	}
+
+	&__components {
+		@include font-size(0);
+		@include line-height(0);
+		padding: 7px 8px;
+		text-align: left;
+
+		&--item {
+			background: $deviceBorderColor;
+			border-radius: 100%;
+			display: inline-block;
+			height: 10px;
+			margin: 0 7px 0 0;
+			width: 10px;
+		}
+
+		&--screenshot {
+			background: image-url('ui/loader.gif') center no-repeat $deviceBorderColor;
+			padding: 0;
+		}
+
+	}
+
+}
+
+.showcase {
+	margin: 60px 0 0 0;
+	overflow-x: hidden;
+	padding: 8px 0;
+	position: relative;
+
+	&__item {
+
+		&--primary {
+			position: relative;
+			transition: max-width 1s, opacity 1s;
+			transition-delay: 0.5s;
+			z-index: 5;
+		}
+
+		&--tertiary,
+		&--secondary {
+			left: 50%;
+			position: absolute;
+			transition: max-width 2s, opacity 2s;
+			z-index: 4;
+		}
+
+		&--tertiary {
+			transition-delay: 2s;
+			z-index: 3;
+
+			&.iphone {
+				top: (70px / 681px) * 100%;
+
+				&.showcase__item--tertiary--a {
+					transform: translateX(-220%);
+				}
+
+				&.showcase__item--tertiary--b {
+					transform: translateX(120%);
+				}
+
+			}
+
+		}
+
+		&--secondary {
+			transition-delay: 1s;
+
+			&.iphone {
+				top: (35px / 681px) * 100%;
+
+				&.showcase__item--secondary--a {
+					transform: translateX(-130%);
+				}
+
+				&.showcase__item--secondary--b {
+					transform: translateX(30%);
+				}
+
+			}
+
+			&.ipad,
+			&.browser {
+				top: (67px / 681px) * 100%;
+
+				&.showcase__item--secondary--a {
+					transform: translateX(-110%);
+				}
+
+				&.showcase__item--secondary--b {
+					transform: translateX(10%);
+				}
+
+			}
+
+		}
+
+	}
+
+	&__screenshot {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		&:after {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.browser & {
+			border-radius: 0 0 4px 4px;
+		}
+
+	}
+
+	&.is-visible {
+
+		.showcase {
+
+			&__screenshot {
+
+				&:after {
+					opacity: 1;
+				}
+
+			}
+
+		}
+
+	}
+
+}
