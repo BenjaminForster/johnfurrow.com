@@ -333,22 +333,23 @@ $iPadBorderRadiusPercentHeight: ($iPadBorderRadius / $iPadHeight) * 100%;
 	&__item {
 
 		&--primary {
+			backface-visibility: hidden;
 			position: relative;
 			transition: max-width 1s, opacity 1s;
-			transition-delay: 0.5s;
 			z-index: 5;
 		}
 
 		&--tertiary,
 		&--secondary {
+			backface-visibility: hidden;
 			left: 50%;
 			position: absolute;
-			transition: max-width 2s, opacity 2s;
+			transition: max-width 1s, opacity 1s;
 			z-index: 4;
 		}
 
 		&--tertiary {
-			transition-delay: 2s;
+			transition-delay: 1s;
 			z-index: 3;
 
 			&.iphone {
@@ -367,7 +368,7 @@ $iPadBorderRadiusPercentHeight: ($iPadBorderRadius / $iPadHeight) * 100%;
 		}
 
 		&--secondary {
-			transition-delay: 1s;
+			transition-delay: 0.5s;
 
 			&.iphone {
 				top: (35px / 681px) * 100%;
