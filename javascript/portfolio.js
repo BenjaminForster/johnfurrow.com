@@ -44,7 +44,7 @@ var portfolio = {
 
 			var rect = element.getBoundingClientRect();
 
-			return (rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight));
+			return ((rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight)) || (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0));
 
 		}
 
