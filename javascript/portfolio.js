@@ -2,6 +2,8 @@ var portfolio = {
 
 	init: function() {
 
+		portfolio.ui.checkVisibility();
+
 		setTimeout(function() {
 			$("body").addClass("is-loaded");
 		}, 50);
