@@ -1,0 +1,19 @@
+.introduction {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+
+  .heading {
+
+    &--primary {
+      font-size: 4rem;
+      line-height: 3.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &--secondary {
+      font-size: 2rem;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="description" content="John Furrow is a nerd of front-end engineering, design, and music.")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title John Furrow is Legit
+    script(src="./index.js")
+    link(rel="stylesheet" href="./index.css")
+  body
+    div.container
+      div.introduction
+        h2.heading.heading--secondary Hello!
+        h1.heading.heading--primary I'm John Furrow.
+        h3.heading.heading--tertiary I’m a front-end engineer and I really like
+          | &nbsp;
+          span#text-cycle.text-cycle
+            span.text-cycle__copy.text-cycle__copy--active= initialItem
+              span.text-cycle__copy__period .
+        ul.contact-channels
+          li.contact-channels__item
+            a(href="https://github.com/jfurrow" target="_blank")
+              include ../images/contact-channels/github.svg
+          li.contact-channels__item
+            a(href="https://dribbble.com/johnfurrow" target="_blank")
+              include ../images/contact-channels/dribbble.svg
+          li.contact-channels__item
+            a(href="https://twitter.com/yeahjohnnnf" target="_blank")
+              include ../images/contact-channels/twitter.svg
+          li.contact-channels__item
+            a(href="http://www.linkedin.com/pub/john-furrow/13/384/928/" target="_blank")
+              include ../images/contact-channels/linkedin.svg
+          li.contact-channels__item
+            a(href="mailto:hello@johnfurrow.com" target="_blank")
+              include ../images/contact-channels/email.svg
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-55220250-1', 'auto');
+      ga('send', 'pageview');

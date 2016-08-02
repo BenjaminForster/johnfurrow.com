@@ -1,0 +1,21 @@
+.contact-channels {
+  display: flex;
+  margin-top: 2rem;
+
+  &__item {
+    flex: 0 0 auto;
+    list-style: none;
+
+    a {
+      display: block;
+      fill: rgba($light-blue, 0.5);
+      height: 1.75rem;
+      transition: fill 0.15s;
+      width: 1.75rem;
+
+      &:hover {
+        fill: $dark-blue;
+      }
+    }
+  }
+}

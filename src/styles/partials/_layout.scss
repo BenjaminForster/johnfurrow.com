@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  max-width: 1400px;
+  padding: $spacing;
+  width: 100%;
+
+  @media (min-width: $viewport-width-small) {
+    padding: $spacing * 1.125;
+  }
+
+  @media (min-width: $viewport-width-medium) {
+    padding: $spacing * 1.25;
+  }
+
+  @media (min-width: $viewport-width-large) {
+    padding: $spacing * 1.5;
+  }
+}

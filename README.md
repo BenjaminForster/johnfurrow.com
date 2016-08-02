@@ -1,4 +1,4 @@
-Portfolio
+Personal Website
 =========
 
-This is my design portfolio.
+This is my personal website.
