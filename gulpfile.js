@@ -1,4 +1,5 @@
 'use strict';
+let autoprefixer = require('gulp-autoprefixer');
 let babel = require('gulp-babel');
 let browserSync = require('browser-sync');
 let cleanCSS = require('gulp-clean-css');
@@ -49,6 +50,7 @@ gulp.task('serve', ['styles'], function() {
 gulp.task('styles', function () {
   return gulp.src(`${paths.src}${paths.stylesEntry}`)
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(cleanCSS({keepSpecialComments: 0}))
     .pipe(gulp.dest(paths.dist))
     .pipe(browserSync.stream());
