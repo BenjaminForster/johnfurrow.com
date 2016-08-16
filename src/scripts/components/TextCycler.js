@@ -37,8 +37,18 @@ export default class TextCycler {
     return nextTextIndex;
   }
 
-  getNextItemText() {
-    return `${this.options.items[this.getNextItemIndex()]}<span class="text-cycle__copy__period">.</span>`;
+  getNextItemNode() {
+    let fragment = global.document.createDocumentFragment();
+    let nextItemTextNode = global.document
+      .createTextNode(this.options.items[this.getNextItemIndex()]);
+    let period = global.document.createElement('span');
+    period.classList.add('text-cycle__copy__period');
+    period.textContent = '.';
+
+    fragment.appendChild(nextItemTextNode);
+    fragment.appendChild(period);
+
+    return fragment;
   }
 
   handleNodeTransitionEnd(event) {
@@ -50,9 +60,11 @@ export default class TextCycler {
   increment() {
     let hiddenNodeIndex = this.getHiddenNodeIndex();
 
-    this.nodes[this.currentNodeIndex].classList.remove('text-cycle__copy--active');
+    this.nodes[this.currentNodeIndex].classList
+      .remove('text-cycle__copy--active');
     this.nodes[hiddenNodeIndex].classList.add('text-cycle__copy--active');
-    this.nodes.placeholder.innerHTML = this.getNextItemText();
+
+    this.replaceNodeContent(this.nodes.placeholder, this.getNextItemNode());
 
     this.currentItemIndex = this.getNextItemIndex();
     this.currentNodeIndex = hiddenNodeIndex;
@@ -60,6 +72,7 @@ export default class TextCycler {
 
   init() {
     let firstItemNode = this.mountPoint.firstChild;
+    let fragment = global.document.createDocumentFragment();
     let nextItemNode = global.document.createElement('span');
     let placeholderItemNode = global.document.createElement('span');
 
@@ -70,7 +83,7 @@ export default class TextCycler {
     placeholderItemNode.classList.add('text-cycle__copy');
     placeholderItemNode.classList.add('text-cycle__copy--placeholder');
 
-    nextItemNode.innerHTML = this.getNextItemText();
+    this.replaceNodeContent(nextItemNode, this.getNextItemNode());
     placeholderItemNode.textContent = `${this.options.items[0]}.`;
 
     this.nodes = {
@@ -79,14 +92,27 @@ export default class TextCycler {
       placeholder: placeholderItemNode
     };
 
+    fragment.appendChild(nextItemNode);
+    fragment.appendChild(placeholderItemNode);
+
+    this.mountPoint.insertBefore(fragment, firstItemNode);
     this.interval = global.setInterval(this.increment.bind(this),
       this.cycleLength);
-
-    this.mountPoint.insertBefore(nextItemNode, firstItemNode);
-    this.mountPoint.insertBefore(placeholderItemNode, firstItemNode);
   }
 
   prepareNextNode() {
-    this.nodes[this.getHiddenNodeIndex()].innerHTML = this.getNextItemText();
+    let nextItemNode = this.nodes[this.getHiddenNodeIndex()];
+    this.replaceNodeContent(nextItemNode, this.getNextItemNode());
+  }
+
+  removeChildNodes(node) {
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    }
+  }
+
+  replaceNodeContent(node, content) {
+    this.removeChildNodes(node);
+    node.appendChild(content);
   }
 }
