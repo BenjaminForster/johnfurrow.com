@@ -3,9 +3,9 @@ html(lang="en")
   head
     meta(charset="utf-8")
     meta(http-equiv="x-ua-compatible" content="ie=edge")
-    meta(name="description" content="John Furrow is a nerd of front-end engineering, design, and music.")
+    meta(name="description" content="I'm a front-end engineer with an insatiable thirst for building beautiful user interfaces.")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    title John Furrow is Legit
+    title John Furrow &mdash; Front-end Engineer
     script(src="./index.js")
     link(rel="stylesheet" href="./index.css")
   body
@@ -16,7 +16,7 @@ html(lang="en")
         h3.heading.heading--tertiary I’m a front-end engineer and I really like
           | &nbsp;
           span#text-cycle.text-cycle
-            span.text-cycle__copy.text-cycle__copy--active= initialItem
+            span.text-cycle__copy.text-cycle__copy--active.text-cycle__copy--entering= initialItem
               span.text-cycle__copy__period .
         ul.contact-channels
           li.contact-channels__item
