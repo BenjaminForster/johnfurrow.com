@@ -1,3 +1,5 @@
+'use strict';
+
 import TextCycler from './components/TextCycler';
 import textCyclerItems from './constants/textCyclerItems';
 
